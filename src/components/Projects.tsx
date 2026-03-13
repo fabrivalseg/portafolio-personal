@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, BadgeCheck } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import type { CSSProperties } from 'react';
 
 const Projects = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const [manualShift, setManualShift] = useState(0);
+
   const projects = [
     {
       title: 'Sitio institucional para residencia senior',
@@ -27,7 +32,28 @@ const Projects = () => {
       stack: ['Astro', 'UI Responsive', 'Optimizacion de performance'],
       linkWeb: 'https://santohorno.com/',
     },
+    {
+      title: 'Sistema de gestion para residencia',
+      challenge: 'La coordinacion entre enfermeros, medicos, administracion y residentes era fragmentada.',
+      solution:
+        'Plataforma integral para empleados con trazabilidad completa e historial digital de cada accion.',
+      impact:
+        'Procesos mas agiles, menos errores operativos y una gestion centralizada de la residencia.',
+      stack: ['React', 'Java', 'Spring Boot', 'SQL'],
+      linkWeb: '',
+    },
   ];
+
+  const duplicatedProjects = [...projects, ...projects];
+  const manualStep = 320;
+
+  const handlePrev = () => {
+    setManualShift((current) => current + manualStep);
+  };
+
+  const handleNext = () => {
+    setManualShift((current) => current - manualStep);
+  };
 
   return (
     <section id="casos" className="py-24 px-6">
@@ -48,54 +74,83 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -5 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-              className="glass-panel rounded-2xl p-6 border border-white/10 hover:border-teal-300/40"
-            >
-              <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
-              <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Desafio:</span> {project.challenge}</p>
-              <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Solucion:</span> {project.solution}</p>
-              <p className="text-zinc-400 mb-5"><span className="text-zinc-200">Impacto:</span> {project.impact}</p>
+        <div
+          className="projects-carousel"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          onTouchCancel={() => setIsPaused(false)}
+          data-paused={isPaused}
+        >
+          <div
+            className="projects-manual"
+            style={{ '--manual-shift': `${manualShift}px` } as CSSProperties}
+          >
+            <div className="projects-track">
+              {duplicatedProjects.map((project, index) => (
+                <article
+                  key={`${project.title}-${index}`}
+                  className="projects-card glass-panel rounded-2xl p-6 border border-white/10 hover:border-teal-300/40"
+                >
+                  <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+                  <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Desafio:</span> {project.challenge}</p>
+                  <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Solucion:</span> {project.solution}</p>
+                  <p className="text-zinc-400 mb-5"><span className="text-zinc-200">Impacto:</span> {project.impact}</p>
 
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.stack.map((item) => (
-                  <span
-                    key={item}
-                    className="text-xs px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-zinc-300"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.stack.map((item) => (
+                      <span
+                        key={`${project.title}-${item}`}
+                        className="text-xs px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-zinc-300"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
 
-              <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 text-sm text-teal-300">
-                  <BadgeCheck className="w-4 h-4" />
-                  Caso real
-                </span>
-                {project.linkWeb ? (
-                  <a
-                    href={project.linkWeb}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-zinc-100 hover:text-teal-300 transition-colors"
-                  >
-                    Ver online
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                ) : (
-                  <span className="text-zinc-500 text-sm">Demo privada</span>
-                )}
-              </div>
-            </motion.article>
-          ))}
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="inline-flex items-center gap-2 text-sm text-teal-300">
+                      <BadgeCheck className="w-4 h-4" />
+                      Caso real
+                    </span>
+                    {project.linkWeb ? (
+                      <a
+                        href={project.linkWeb}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 text-zinc-100 hover:text-teal-300 transition-colors"
+                      >
+                        Ver online
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <span className="text-zinc-500 text-sm">Demo privada</span>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-7 flex items-center justify-center gap-3">
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-zinc-100 hover:border-teal-300/60 hover:text-teal-300"
+            aria-label="Mover carrusel hacia la izquierda"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-zinc-100 hover:border-teal-300/60 hover:text-teal-300"
+            aria-label="Mover carrusel hacia la derecha"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>
