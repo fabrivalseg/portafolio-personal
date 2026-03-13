@@ -15,7 +15,7 @@ const Hero = () => {
         >
           <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-300/30 bg-zinc-900/70 text-teal-200 text-sm mb-6">
             <CheckCircle2 className="w-4 h-4" />
-            Desarrollo web profesional para empresas y emprendedores
+            Desarrollo web profesional en Cordoba para empresas y emprendedores
           </p>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight text-white">
@@ -23,7 +23,7 @@ const Hero = () => {
           </h1>
 
           <p className="mt-6 text-lg md:text-xl text-zinc-300 max-w-3xl leading-relaxed">
-            Ayudo a negocios que necesitan presencia digital real: sitios institucionales,
+            Ayudo a negocios de Cordoba y Argentina que necesitan presencia digital real: sitios institucionales,
             ecommerce y sistemas a medida con foco en resultados, velocidad y trato directo
             con el desarrollador.
           </p>

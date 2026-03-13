@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Reemplaza por tu dominio real en produccion
+Sitemap: https://fabriziovalverde.netlify.app/sitemap.xml

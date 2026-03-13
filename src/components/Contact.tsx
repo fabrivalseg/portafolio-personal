@@ -31,7 +31,7 @@ const Contact = () => {
             Contame tu idea y te propongo una solucion concreta
           </h2>
           <p className="text-zinc-400 mt-4 max-w-3xl mx-auto">
-            Elegi el canal que te resulte mas comodo: WhatsApp, email, formulario o reunion.
+            Trabajo con negocios de Cordoba y tambien de toda Argentina. Elegi el canal que te resulte mas comodo: WhatsApp, email, formulario o reunion.
           </p>
         </motion.div>
 
