@@ -1,141 +1,101 @@
-import { ExternalLink, Github, Coffee, IceCream, Heading as Bread } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, BadgeCheck } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Landing page residencia',
-      description: 'Landing page para una residencia de adultos mayores',
-      technologies: ['Next.js', 'Css', 'React', 'SEO optimizado'],
-      icon: Coffee,
-      gradient: 'from-amber-400 to-orange-500',
-      borderGradient: 'from-amber-500/20 to-orange-500/20',
-      linkWeb: "https://geriatrico.netlify.app/",
-      linkGit: "https://github.com/fabrivalseg/geriatrico.git"
+      title: 'Sitio institucional para residencia senior',
+      challenge: 'Necesitaban una presencia digital clara para generar confianza y consultas.',
+      solution: 'Diseño UX enfocado en servicios, testimonios y contacto inmediato por WhatsApp.',
+      impact: 'Mejor percepcion de marca y mas solicitudes de informacion desde la web.',
+      stack: ['React', 'SEO Tecnico', 'Tailwind'],
+      linkWeb: 'https://geriatrico.netlify.app/',
     },
     {
-      title: 'Sistema de Gestión - Heladería',
-      description: 'Sistema de toma y realizacion de pedidos para una cafeteria, incluye gestion de productos, empleados y pedidos.',
-      technologies: ['React', 'Css', 'Supabase', 'Java', 'Spring Boot'],
-      icon: IceCream,
-      gradient: 'from-pink-400 to-purple-500',
-      borderGradient: 'from-pink-500/20 to-purple-500/20',
-      linkWeb: "",
-      linkGit: "https://github.com/fabrivalseg/geriatrico.git"
+      title: 'Sistema de pedidos para cafeteria/heladeria',
+      challenge: 'El negocio gestionaba pedidos de forma manual con errores operativos.',
+      solution: 'Plataforma web para administrar productos, pedidos y equipo en un unico lugar.',
+      impact: 'Menos friccion en operacion diaria y mejor control de tiempos de entrega.',
+      stack: ['React', 'Java', 'Spring Boot', 'Supabase'],
+      linkWeb: '',
     },
     {
-      title: 'Web Profesional - Santo Horno',
-      description: 'Sitio web moderno y optimizado para panificadora con diseño responsive y SEO optimizado.',
-      technologies: ['Astro', 'Css', 'SEO optimizado'],
-      icon: Bread,
-      gradient: 'from-yellow-400 to-amber-500',
-      borderGradient: 'from-yellow-500/20 to-amber-500/20',
-      linkGit: "https://github.com/SantoHornoWeb/santo_horno_web",
-      linkWeb: "https://santohorno.com/"
+      title: 'Web comercial para marca gastronomica',
+      challenge: 'Sitio anterior sin estructura comercial ni claridad de propuesta de valor.',
+      solution: 'Nueva landing con narrativa de marca, jerarquia visual y CTA claros.',
+      impact: 'Mejor experiencia movil y aumento en contactos de potenciales clientes.',
+      stack: ['Astro', 'UI Responsive', 'Optimizacion de performance'],
+      linkWeb: 'https://santohorno.com/',
     },
-    {
-      title: 'Traductor de idiomas',
-      description: 'Traductor al estilo google, no hecho responsive solamente para laptops',
-      technologies: ['Css', 'React', 'Javascript'],
-      icon: Bread,
-      gradient: 'from-yellow-400 to-amber-500',
-      borderGradient: 'from-yellow-500/20 to-amber-500/20',
-      linkWeb: "https://translateappmaster.netlify.app/",
-      linkGit: "https://github.com/fabrivalseg/translate-app-master.git"
-    },
-    {
-      title: 'Sitema gestion de invitados',
-      description: 'Diseñé una solución sencilla y funcional para gestionar el acceso de invitados a una fiesta, permitiendo control en la entrada y verificación digital.',
-      technologies: ['React', 'Css', 'Node js', 'Mongo Db'],
-      icon: Bread,
-      gradient: 'from-yellow-400 to-amber-500',
-      borderGradient: 'from-yellow-500/20 to-amber-500/20',
-      linkWeb: "", 
-      linkGit: ""
-    },
-    {
-      title: 'Frontend Ecommerce',
-      description: 'Pagina principal de un ecommerce que permite agregar el producto y visualizar imagenes y links de una manera interesante.',
-      technologies: ['Html', 'Css', 'Javascript'],
-      icon: Bread,
-      gradient: 'from-yellow-400 to-amber-500',
-      borderGradient: 'from-yellow-500/20 to-amber-500/20',
-      linkWeb: "https://github.com/fabrivalseg/pagina-principal-eccomerce.git", 
-      linkGit: "https://github.com/fabrivalseg/pagina-principal-eccomerce.git"
-    },
-    {
-      title: 'Tienda de ropa',
-      description: 'Tienda de ropa online con carrito de compras y gestion de productos',
-      technologies: ['React', 'Css', 'Javascript', 'Vite'],
-      icon: Bread,
-      gradient: 'from-yellow-400 to-amber-500',
-      borderGradient: 'from-yellow-500/20 to-amber-500/20',
-      linkWeb: "", 
-      linkGit: ""
-    }
   ];
 
   return (
-    <section id="proyectos" className="py-20 px-6">
+    <section id="casos" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Proyectos
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14"
+        >
+          <p className="text-sm uppercase tracking-[0.2em] text-teal-300 mb-4">Casos de exito</p>
+          <h2 className="text-3xl md:text-5xl font-semibold text-white">
+            Proyectos reales con impacto real
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
-        </div>
+          <p className="text-zinc-400 mt-4 max-w-3xl mx-auto">
+            Cada caso parte de un problema de negocio concreto, no solo de una necesidad estetica.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const IconComponent = project.icon;
-            return (
-              <div
-                key={project.title}
-                className="group relative"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {/* Glowing border effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${project.borderGradient} rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200`}></div>
-                
-                <div className="relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm rounded-xl p-6 h-full border border-slate-700/50 group-hover:border-transparent transition-all duration-300 transform group-hover:scale-105">
-                  <div className={`inline-flex p-3 bg-gradient-to-r ${project.gradient} rounded-lg mb-4 group-hover:rotate-12 transition-transform duration-300`}>
-                    <IconComponent className="w-6 h-6 text-white" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  
-                  <p className="text-gray-400 mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-slate-700/50 text-cyan-400 rounded-full text-sm font-medium border border-cyan-500/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  {
-                    project.linkWeb && project.linkGit &&
-                    <div className="flex space-x-3">
-                    <a href={project.linkGit} target='_blank' className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg text-white font-medium hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 transform hover:scale-105">
-                      <Github className="w-4 h-4" />
-                      <span>Código</span>
-                    </a>
-                    <a href={project.linkWeb} target='_blank' className="flex items-center space-x-2 px-4 py-2 border border-cyan-500 text-cyan-400 rounded-lg font-medium hover:bg-cyan-500 hover:text-white transition-all duration-300">
-                      <ExternalLink className="w-4 h-4" />
-                      <span>Visualizacion</span>
-                    </a>
-                  </div>
-                  }
-                </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="glass-panel rounded-2xl p-6 border border-white/10 hover:border-teal-300/40"
+            >
+              <h3 className="text-xl font-semibold text-white mb-3">{project.title}</h3>
+              <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Desafio:</span> {project.challenge}</p>
+              <p className="text-zinc-400 mb-2"><span className="text-zinc-200">Solucion:</span> {project.solution}</p>
+              <p className="text-zinc-400 mb-5"><span className="text-zinc-200">Impacto:</span> {project.impact}</p>
+
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.stack.map((item) => (
+                  <span
+                    key={item}
+                    className="text-xs px-2.5 py-1 rounded-full border border-white/15 bg-white/5 text-zinc-300"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-            );
-          })}
+
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 text-sm text-teal-300">
+                  <BadgeCheck className="w-4 h-4" />
+                  Caso real
+                </span>
+                {project.linkWeb ? (
+                  <a
+                    href={project.linkWeb}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-zinc-100 hover:text-teal-300 transition-colors"
+                  >
+                    Ver online
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <span className="text-zinc-500 text-sm">Demo privada</span>
+                )}
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

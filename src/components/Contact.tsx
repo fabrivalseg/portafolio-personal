@@ -1,161 +1,173 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { CalendarDays, Mail, MessageCircle, Phone, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const meetingUrl = 'https://calendly.com/fabrizioval-seg/30min';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const phoneNumber = "5493517169604"; // tu número en formato internacional sin "+"
-    const text = `Hola, soy ${name}. Mi correo es ${email}. Mensaje: ${message}`;
+    const phoneNumber = '5493517169604';
+    const text = `Hola Fabrizio, soy ${name}. Mi correo es ${email}. Proyecto: ${message}`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
+    window.open(url, '_blank');
   };
+
   return (
-    <section id="contacto" className="py-20 px-6">
+    <section id="contacto" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Contacto
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14"
+        >
+          <p className="text-sm uppercase tracking-[0.2em] text-teal-300 mb-4">Contacto</p>
+          <h2 className="text-3xl md:text-5xl font-semibold text-white">
+            Contame tu idea y te propongo una solucion concreta
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
-        </div>
+          <p className="text-zinc-400 mt-4 max-w-3xl mx-auto">
+            Elegi el canal que te resulte mas comodo: WhatsApp, email, formulario o reunion.
+          </p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="group">
-              <h3 className="text-2xl font-bold text-white mb-6">Información de Contacto</h3>
-              
-              <div className="space-y-4">
-                <a
-                  href="mailto:fabrizioval.seg@gmail.com"
-                  target='_blank'
-                  className="flex items-center space-x-4 p-4 bg-gradient-to-r from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Email</p>
-                    <p className="text-cyan-400">fabrizioval.seg@gmail.com</p>
-                  </div>
-                </a>
-
-                <a
-                  href="tel:+5493517169604"
-                  className="flex items-center space-x-4 p-4 bg-gradient-to-r from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Teléfono</p>
-                    <p className="text-cyan-400">+54 9 3517169604</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center space-x-4 p-4 bg-gradient-to-r from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-medium">Ubicación</p>
-                    <p className="text-cyan-400">Río Segundo, Córdoba, Argentina</p>
-                  </div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55 }}
+            className="space-y-4"
+          >
+            <a
+              href="https://wa.me/5493517169604?text=Hola%20quiero%20cotizar%20un%20proyecto"
+              target="_blank"
+              rel="noreferrer"
+              className="glass-panel rounded-2xl p-5 border border-white/10 hover:border-teal-300/40 flex items-center justify-between transition-all"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-teal-300" />
+                </div>
+                <div>
+                  <p className="text-white font-medium">WhatsApp</p>
+                  <p className="text-zinc-400 text-sm">Respuesta rapida para cotizacion</p>
                 </div>
               </div>
-            </div>
-
-            <div className="p-6 bg-gradient-to-br from-slate-800/30 to-slate-900/30 rounded-xl border border-cyan-500/20">
-              <h4 className="text-xl font-bold text-white mb-4">¿Por qué trabajar conmigo?</h4>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span>Desarrollo full stack con tecnologías modernas</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span>Experiencia en proyectos reales para empresas</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span>Autodidacta y en constante aprendizaje</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span>Responsable y orientado a resultados</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-         <div className="space-y-6">
-            <div className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20">
-              <h3 className="text-2xl font-bold text-white mb-6">Envíame un mensaje</h3>
-              
-              <form className="space-y-4" onSubmit={handleSubmit}>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Tu nombre"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                  />
-                </div>
-                
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Tu email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                  />
-                </div>
-                
-                <div>
-                  <textarea
-                    rows={5}
-                    placeholder="Tu mensaje"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300 resize-none"
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="group w-full py-3 px-6 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25 flex items-center justify-center space-x-2"
-                >
-                  <Send className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                  <span>Enviar Mensaje</span>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="p-8 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl border border-cyan-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              ¿Listo para llevar tu proyecto al siguiente nivel?
-            </h3>
-            <p className="text-gray-300 mb-6">
-              Colaboremos para crear soluciones innovadoras que marquen la diferencia
-            </p>
-            <a
-              href="mailto:fabrizioval.seg@gmail.com"
-              className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/25"
-            >
-              <Mail className="w-5 h-5" />
-              <span>Comenzar Conversación</span>
+              <span className="text-zinc-200 text-sm">Abrir</span>
             </a>
-          </div>
+
+            <a
+              href="mailto:fabrizioval.seg@gmail.com?subject=Consulta%20de%20proyecto"
+              className="glass-panel rounded-2xl p-5 border border-white/10 hover:border-teal-300/40 flex items-center justify-between transition-all"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-teal-300" />
+                </div>
+                <div>
+                  <p className="text-white font-medium">Email</p>
+                  <p className="text-zinc-400 text-sm">fabrizioval.seg@gmail.com</p>
+                </div>
+              </div>
+              <span className="text-zinc-200 text-sm">Enviar</span>
+            </a>
+
+            <a
+              href={meetingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="glass-panel rounded-2xl p-5 border border-white/10 hover:border-teal-300/40 flex items-center justify-between transition-all"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center">
+                  <CalendarDays className="w-5 h-5 text-teal-300" />
+                </div>
+                <div>
+                  <p className="text-white font-medium">Agendar reunion</p>
+                  <p className="text-zinc-400 text-sm">Llamada de descubrimiento</p>
+                </div>
+              </div>
+              <span className="text-zinc-200 text-sm">Reservar</span>
+            </a>
+
+            <a
+              href="tel:+5493517169604"
+              className="glass-panel rounded-2xl p-5 border border-white/10 hover:border-teal-300/40 flex items-center justify-between transition-all"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-teal-300" />
+                </div>
+                <div>
+                  <p className="text-white font-medium">Telefono</p>
+                  <p className="text-zinc-400 text-sm">+54 9 351 716 9604</p>
+                </div>
+              </div>
+              <span className="text-zinc-200 text-sm">Llamar</span>
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55 }}
+            className="glass-panel rounded-2xl p-7 border border-white/10"
+          >
+            <h3 className="text-2xl font-semibold text-white mb-5">Formulario rapido</h3>
+
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-white/15 bg-zinc-900/60 text-white placeholder-zinc-500 focus:outline-none focus:border-teal-300"
+                  required
+                />
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-white/15 bg-zinc-900/60 text-white placeholder-zinc-500 focus:outline-none focus:border-teal-300"
+                  required
+                />
+              </div>
+
+              <div>
+                <textarea
+                  rows={5}
+                  placeholder="Contame que necesitas y que objetivo queres lograr"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl border border-white/15 bg-zinc-900/60 text-white placeholder-zinc-500 focus:outline-none focus:border-teal-300 resize-none"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-zinc-950 font-semibold hover:bg-teal-300 transition-colors"
+              >
+                <Send className="w-5 h-5" />
+                Enviar por WhatsApp
+              </button>
+            </form>
+
+            <p className="text-xs text-zinc-500 mt-4">
+              Te respondo con alcance estimado, tiempos y propuesta inicial.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

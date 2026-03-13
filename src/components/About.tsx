@@ -1,63 +1,93 @@
-import { Code, Rocket, Users, Target } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { BadgeDollarSign, Clock3, Handshake, Sparkles } from 'lucide-react';
 
 const About = () => {
+  const differentiators = [
+    {
+      title: 'Precios accesibles',
+      description: 'Estrategia de desarrollo por etapas para invertir donde realmente importa.',
+      icon: BadgeDollarSign,
+    },
+    {
+      title: 'Atencion personalizada',
+      description: 'Hablas directo conmigo, sin capas de gestion que atrasen decisiones.',
+      icon: Handshake,
+    },
+    {
+      title: 'Desarrollo rapido',
+      description: 'Entregas tempranas para validar resultados antes de avanzar al siguiente sprint.',
+      icon: Clock3,
+    },
+    {
+      title: 'Solucion a medida',
+      description: 'Cada proyecto se diseña para tu contexto, objetivo y tipo de cliente.',
+      icon: Sparkles,
+    },
+  ];
+
   return (
-    <section id="sobre-mi" className="py-20 px-6">
+    <section id="sobre-mi" className="py-24 px-6">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            Sobre Mí
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14"
+        >
+          <p className="text-sm uppercase tracking-[0.2em] text-teal-300 mb-4">Confianza</p>
+          <h2 className="text-3xl md:text-5xl font-semibold text-white">
+            Tu proyecto con trato directo y foco en resultados
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Estudiante de Ingeniería en Sistemas en cuarto año, con una fuerte base en desarrollo web y software. 
-              He trabajado en proyectos que van desde sitios web corporativos hasta un sistema de gestión para una cafetería, 
-              aplicando principios de escalabilidad, rendimiento y usabilidad. Siempre enfocado aprendizaje constante
-              y la mejora continua, lo que me ha permitido adaptarme rápidamente a nuevas tecnologías.
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <p className="text-zinc-300 leading-relaxed text-lg">
+              Soy Fabrizio, desarrollador de software especializado en aplicaciones y sistemas web.
+              Trabajo con empresas, emprendedores y negocios que necesitan una solucion digital
+              profesional para captar clientes, vender online o mejorar procesos.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Me considero una persona proactiva, con atención al detalle y siempre en busca de nuevos desafíos que me permitan 
-              seguir creciendo como profesional en el mundo del desarrollo. 🚀
+            <p className="text-zinc-300 leading-relaxed text-lg">
+              Mi enfoque combina vision de negocio con ejecucion tecnica: priorizo conversion,
+              experiencia de usuario y estabilidad para que tu inversion tenga retorno.
             </p>
-          
-          </div>
+            <a
+              href="https://wa.me/5493517169604?text=Hola%20Fabrizio,%20quiero%20hablar%20sobre%20mi%20proyecto"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex px-6 py-3 rounded-full bg-white text-zinc-950 font-semibold hover:bg-teal-300 transition-colors"
+            >
+              Hablar de mi proyecto
+            </a>
+          </motion.div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="group p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <Code className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Full Stack</h3>
-              <p className="text-gray-400">Desarrollo completo de aplicaciones web</p>
-            </div>
-
-            <div className="group p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <Rocket className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Innovación</h3>
-              <p className="text-gray-400">Tecnologías modernas y tendencias</p>
-            </div>
-
-            <div className="group p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Colaboración</h3>
-              <p className="text-gray-400">Trabajo en equipo efectivo</p>
-            </div>
-
-            <div className="group p-6 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:transform hover:scale-105">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Objetivos</h3>
-              <p className="text-gray-400">Orientado a resultados</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {differentiators.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="glass-panel rounded-2xl p-5 border border-white/10"
+                >
+                  <div className="w-11 h-11 rounded-lg border border-white/15 bg-white/5 text-teal-300 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{item.description}</p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </div>

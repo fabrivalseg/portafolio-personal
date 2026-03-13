@@ -1,71 +1,96 @@
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, CalendarDays, CheckCircle2, Mail, MessageCircle } from 'lucide-react';
 
 const Hero = () => {
+  const meetingUrl = 'https://calendly.com/fabrizioval-seg/30min';
+
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center px-6">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20"></div>
-      
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
-            Fabrizio
+    <section id="inicio" className="relative min-h-screen flex items-center px-6 pt-24 md:pt-28">
+      <div className="container mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl"
+        >
+          <p className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-300/30 bg-zinc-900/70 text-teal-200 text-sm mb-6">
+            <CheckCircle2 className="w-4 h-4" />
+            Desarrollo web profesional para empresas y emprendedores
+          </p>
+
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tight text-white">
+            Tu proxima web o sistema, <span className="text-teal-300">hecho para vender</span>.
           </h1>
-          <h2 className="text-4xl md:text-6xl font-light mb-6 text-white">
-            Valverde Segura
-          </h2>
-          <div className="relative">
-            <div className="text-xl md:text-2xl text-cyan-300 font-light tracking-wider animate-bounce">
-              &lt; Desarrollador Full Stack /&gt;
-            </div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+
+          <p className="mt-6 text-lg md:text-xl text-zinc-300 max-w-3xl leading-relaxed">
+            Ayudo a negocios que necesitan presencia digital real: sitios institucionales,
+            ecommerce y sistemas a medida con foco en resultados, velocidad y trato directo
+            con el desarrollador.
+          </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <a
+              href="https://wa.me/5493517169604?text=Hola%20Fabrizio,%20quiero%20cotizar%20un%20proyecto"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-zinc-950 font-semibold hover:bg-teal-300 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Escribirme por WhatsApp
+            </a>
+            <a
+              href="#contacto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/25 text-white hover:border-teal-300 hover:text-teal-200 transition-colors"
+            >
+              <ArrowRight className="w-5 h-5" />
+              Enviar formulario
+            </a>
+            <a
+              href={meetingUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/25 text-zinc-100 hover:border-white hover:bg-white/10 transition-all"
+            >
+              <CalendarDays className="w-5 h-5" />
+              Agendar reunion
+            </a>
           </div>
-        </div>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl mx-auto">
-          Estudiante de Ingeniería en Sistemas | Especializado en desarrollo web moderno 
-          con Java, React y tecnologías emergentes
-        </p>
+          <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm text-zinc-400">
+            <span>Precios accesibles</span>
+            <span>Entrega rapida</span>
+            <span>Atencion personalizada</span>
+            <span>Soluciones a medida</span>
+          </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <a href="#proyectos" className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full text-white font-semibold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25">
-            Ver Proyectos
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-          </a>
-          
           <a
-            href="#contacto"
-            className="group relative px-8 py-4 border-2 border-cyan-500 rounded-full text-cyan-400 font-semibold hover:bg-cyan-500 hover:text-white transition-all duration-300 transform hover:scale-105"
+            href="mailto:fabrizioval.seg@gmail.com?subject=Consulta%20de%20proyecto"
+            className="mt-8 inline-flex items-center gap-2 text-teal-300 hover:text-teal-200 transition-colors"
           >
-            Contáctame
+            <Mail className="w-4 h-4" />
+            O escribime por email: fabrizioval.seg@gmail.com
           </a>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center space-x-6">
-          <a
-            href="mailto:fabrizioval.seg@gmail.com"
-            className="p-3 rounded-full bg-slate-800/50 hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110 hover:rotate-12"
-          >
-            <Mail className="w-6 h-6 text-cyan-400" />
-          </a>
-          <a
-            href="https://github.com/fabrivalseg"
-            target='_blank'
-            className="p-3 rounded-full bg-slate-800/50 hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110 hover:rotate-12"
-          >
-            <Github className="w-6 h-6 text-cyan-400" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/fabrizio-valverde-segura"
-            target='_blank'
-            className="p-3 rounded-full bg-slate-800/50 hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110 hover:rotate-12"
-          >
-            <Linkedin className="w-6 h-6 text-cyan-400" />
-          </a>
-        </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="w-8 h-8 text-cyan-400" />
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="mt-14 grid sm:grid-cols-3 gap-4"
+        >
+          <div className="glass-panel rounded-2xl p-5">
+            <p className="text-3xl font-semibold text-white">A medida</p>
+            <p className="text-zinc-400">Cada proyecto se adapta a tu negocio</p>
+          </div>
+          <div className="glass-panel rounded-2xl p-5">
+            <p className="text-3xl font-semibold text-white">&lt;48h</p>
+            <p className="text-zinc-400">Para primeras propuestas funcionales</p>
+          </div>
+          <div className="glass-panel rounded-2xl p-5">
+            <p className="text-3xl font-semibold text-white">1:1</p>
+            <p className="text-zinc-400">Comunicacion directa sin intermediarios</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
